@@ -392,7 +392,7 @@ zDistributionDictionary = {
 }
 
 def getProbabilityFromZ(z):
-    z = abs(float(z))
+    z = abs(round(float(z), 2))
 
     if z in zDistributionDictionary:
         return zDistributionDictionary[z]

@@ -392,6 +392,8 @@ zDistributionDictionary = {
 }
 
 def getProbabilityFromZ(z):
+    z = float(z)
+
     if z in zDistributionDictionary:
         return zDistributionDictionary[z]
     elif z > max(zDistributionDictionary.keys()):

@@ -392,7 +392,7 @@ zDistributionDictionary = {
 }
 
 def getProbabilityFromZ(z):
-    z = float(z)
+    z = abs(float(z))
 
     if z in zDistributionDictionary:
         return zDistributionDictionary[z]
@@ -407,5 +407,4 @@ def getZFromProbability(probability):
     for z, p in zDistributionDictionary.items():
         if p >= probability:
             return z
-        
-    return "Z-score not found"
+    return False

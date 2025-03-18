@@ -2,24 +2,26 @@
 # Version 0.3
 # By noob_undone
 
-def isValidFloat(value):
+def isValidInput(value):
     try: float(value)
     except: return False
     else: return True
 
 def updateTextZ(input):
-    if isValidFloat(input):
+    if isValidInput(input):
         zScore = input
-        t4.config(text=f"Probability of Z-score {zScore} is: {precomputed.getProbabilityFromZ(zScore)}")
+        if precomputed.getProbabilityFromZ(zScore):
+            t4.config(text=f"Probability of Z-score {zScore} is: {precomputed.getProbabilityFromZ(zScore)}")
     else:
-        t4.config(text=f"{input} is not a valid input.")
+        t4.config(text=f"Error: {input} is not a valid input.")
 
 def updateTextP(input):
-    if isValidFloat(input):
+    if isValidInput(input) and 0 <= float(input) <= 0.5:
         probability = input
-        t6.config(text=f"Z-score of Probability {probability} is: {precomputed.getZFromProbability(probability)}")
+        if precomputed.getZFromProbability(probability):
+            t6.config(text=f"Z-score of Probability {probability} is: {precomputed.getZFromProbability(probability)}")
     else:
-        t6.config(text=f"{input} is not a valid input.")
+        t6.config(text=f"Error: {input} is not a valid input.")
 
 import precomputed
 import tkinter
